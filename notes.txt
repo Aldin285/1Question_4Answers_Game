@@ -1,0 +1,9 @@
+
+
+-----------------------------------------------------
+CSS : 
+
+Pour centrer le texte dans un encadrage précis : 
+    display: flex;
+    justify-content: center;
+    align-items: center;
