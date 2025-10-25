@@ -40,8 +40,9 @@ defineProps({
     }
 
     img {
-        width: 35em;
-        height: 20em;
+        max-width: 35em;
+        max-height: 20em;
         margin-bottom: 1em;
+        border-radius: 3%;
     }
 </style>

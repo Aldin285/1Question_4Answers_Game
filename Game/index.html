@@ -3,11 +3,60 @@
   <head>
     <meta charset="UTF-8">
     <link rel="icon" href="/favicon.ico">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ramabhadra&display=swap" rel="stylesheet">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vite App</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="background">
+      <div class="appli">
+        <div id="app"></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
+
+<style>
+
+  body{
+    margin: 0;
+  }
+
+
+
+  #background {
+  position: relative;
+}
+
+#background::before {
+  content: "";
+  position: absolute;
+  inset: 0; 
+  background: url("../public/images/background.webp") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  filter: brightness(30%);
+  z-index: 0;
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+  color : white;
+
+  font-family: "Ramabhadra", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+  
+
+
+</style>

@@ -7,3 +7,12 @@ Pour centrer le texte dans un encadrage précis :
     display: flex;
     justify-content: center;
     align-items: center;
+
+Pour enlever la bordure blanche qui s'affiche quand on essaye d'ajouter un arrière plan :
+    Il suffit juste de l'enlever dans le fichier index.html : 
+    body{
+        margin: 0;
+    }
+
+Pour éviter de saisir top/bottom/left/-right=0  lors du positionnement :
+    inset : 0
