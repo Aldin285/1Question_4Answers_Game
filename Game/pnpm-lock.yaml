@@ -17,6 +17,9 @@ importers:
       vue-router:
         specifier: ^4.6.3
         version: 4.6.3(vue@3.5.22)
+      vue-timer-hook:
+        specifier: ^1.0.84
+        version: 1.0.84(vue@3.5.22)
     devDependencies:
       '@eslint/js':
         specifier: ^9.37.0
@@ -1258,6 +1261,11 @@ packages:
     peerDependencies:
       vue: ^3.5.0
 
+  vue-timer-hook@1.0.84:
+    resolution: {integrity: sha512-OcHWYO8WD/XcGHdEqMkBI1Vj8m+OnXONrcmZvLcL3Gc6Js5LEs3UJ0eg1akVjNB0cXHishEmrmrhK7PZ+iULww==}
+    peerDependencies:
+      vue: ^3.2.0
+
   vue@3.5.22:
     resolution: {integrity: sha512-toaZjQ3a/G/mYaLSbV+QsQhIdMo9x5rrqIpYRObsJ6T/J+RyCSFwN2LHNVH9v8uIcljDNa3QzPVdv3Y6b9hAJQ==}
     peerDependencies:
@@ -2442,6 +2450,10 @@ snapshots:
   vue-router@4.6.3(vue@3.5.22):
     dependencies:
       '@vue/devtools-api': 6.6.4
+      vue: 3.5.22
+
+  vue-timer-hook@1.0.84(vue@3.5.22):
+    dependencies:
       vue: 3.5.22
 
   vue@3.5.22:

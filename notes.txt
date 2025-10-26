@@ -1,4 +1,9 @@
+Tâches à faire : 
 
+    Ajouter des valeurs max-min aux différents éléments du site ( button answers, question text) 
+    Empecher la selection des réponses quand le chrono est 0 ou quand on séléctionne une mauvaise réponse 
+    Afficher la bonne réponse quand le chrono et à 0 ou quand on séléctionne une mauvaise réponse 
+    Changement de couleurs du chrono par rapport au temps restant
 
 -----------------------------------------------------
 CSS : 
@@ -16,3 +21,11 @@ Pour enlever la bordure blanche qui s'affiche quand on essaye d'ajouter un arri�
 
 Pour éviter de saisir top/bottom/left/-right=0  lors du positionnement :
     inset : 0
+
+-----------------------------------------------------
+Exemples et références : 
+Chrono : 
+    https://www.npmjs.com/package/vue-timer-hook
+    https://www.w3schools.com/html/html5_svg.asp
+    https://codingbeautydev.com/blog/animated-countdown-timer-vue/#google_vignette
+

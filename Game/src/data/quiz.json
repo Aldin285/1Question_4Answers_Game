@@ -4,21 +4,25 @@
     "question": "Who is the main character of the game?",
     "imageURL": "/images/silksong.webp",
     "answers":[
-        {"answerId": 1, "answerText": "Hornet", "isCorrect": true},
-        {"answerId": 2, "answerText": "Shakra", "isCorrect": false},
-        {"answerId": 3, "answerText": "Sherma", "isCorrect": false},
-        {"answerId": 4, "answerText": "Huntress", "isCorrect": false}
-    ]
+        {"id": 1, "answerText": "Hornet"},
+        {"id": 2, "answerText": "Shakra"},
+        {"id": 3, "answerText": "Sherma"},
+        {"id": 4, "answerText": "Huntress"}
+    ],
+    "answerId":1
+
     },{
+
     "quesionId": 2,
     "question": "What is the name of your first crest?",
     "imageURL": "/images/crest.webp",
     "answers":[
-        {"answerId": 1, "answerText": "Reaper", "isCorrect": false},
-        {"answerId": 2, "answerText": "Wanderer", "isCorrect": false},
-        {"answerId": 3, "answerText": "Hunter", "isCorrect": true},
-        {"answerId": 4, "answerText": "Beast", "isCorrect": false}
-    ]
-}
+        {"id": 1, "answerText": "Reaper"},
+        {"id": 2, "answerText": "Wanderer"},
+        {"id": 3, "answerText": "Hunter"},
+        {"id": 4, "answerText": "Beast"}
+    ],
+    "answerId":3
+    }
 
 ]

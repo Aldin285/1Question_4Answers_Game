@@ -16,7 +16,8 @@
   "dependencies": {
     "pnpm": "^10.19.0",
     "vue": "^3.5.22",
-    "vue-router": "^4.6.3"
+    "vue-router": "^4.6.3",
+    "vue-timer-hook": "^1.0.84"
   },
   "devDependencies": {
     "@eslint/js": "^9.37.0",
