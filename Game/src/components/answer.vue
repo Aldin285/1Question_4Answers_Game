@@ -8,6 +8,14 @@ defineProps({
     answer: {
         type: String,
         required: true
+    },
+    style: {
+        type: Object,
+        default: () => ({})
+    },
+    disabled: {
+        type: Boolean,
+        default: false
     }
 });
 
@@ -15,7 +23,7 @@ defineProps({
 
 <template>
 <div>
-    <button :id="id">{{ answer }}</button>
+    <button type="button" :id="id" :style="style" :disabled="disabled">{{ answer }}</button>
 </div>
 </template>
 
