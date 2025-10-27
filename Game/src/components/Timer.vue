@@ -1,36 +1,57 @@
 <script setup>
   import { useTimer, useStopwatch } from 'vue-timer-hook';
-  import { onMounted,watchEffect, computed } from 'vue';
-const props = defineProps({
-    timeLimit:{
-        type: Number,
-        required: true
-    }
-});
+  import { onMounted,watchEffect, computed, ref } from 'vue';
+
+  // Props
+  const props = defineProps({
+      timeLimit:{
+          type: Number,
+          required: true
+      },
+      stop:{
+        type: Boolean,
+        default: false
+      }
+  });
+
  
   const time = new Date();
   time.setSeconds(time.getSeconds() + props.timeLimit);
 
   const chrono = useTimer(time)
-
-  onMounted(() => {
-  watchEffect(async () => {
-    if(chrono.isExpired.value) {
-        console.log('The timer has expired')
-    }
-  })
-})
+ 
   const totalLength = 2 * Math.PI * 45;
 
+
   const timeFraction = computed(() =>{
+
   const fraction =  (chrono.seconds.value)/ props.timeLimit;
   const adjFraction = fraction -(1 / props.timeLimit) * (1-fraction);
+
 //   Pour éviter que ça renvoie une valeur négative
   return Math.max(0,  adjFraction);
 });
 
   const elapsedDash = computed(() => (timeFraction.value * totalLength))
 
+   // Emit
+  const emit = defineEmits(['timeLeft']);
+
+  onMounted(() => {
+  watchEffect(async () => {
+    
+    if(chrono.isExpired.value) {
+        console.log('The timer has expired')
+    }
+
+    if (props.stop){
+      console.log("Chrono stopped")
+      chrono.pause();
+    }
+
+    emit('timeLeft', chrono.seconds.value);
+  })
+})
 
 </script>
 
