@@ -113,6 +113,13 @@
   height: 150px;
   width: 150px;
   position: relative;
+
+   /* From https://css.glass */
+  background: rgba(51, 43, 43, 0.35);
+  border-radius: 100px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .circle {

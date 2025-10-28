@@ -5,6 +5,9 @@ Tâches à faire :
 
     Un get started menu
     Ajouter une page de fin avec un bouton pour recommencer
+    Changer l'emplacement des réponses à chaque fois que la même question apparait
+    ajouter des effets de sons selon la réponse 
+    Des efffets d'animations quand on commence et fini le jeu
 
 -----------------------------------------------------
 CSS : 
@@ -30,3 +33,5 @@ Chrono :
     https://www.w3schools.com/html/html5_svg.asp
     https://codingbeautydev.com/blog/animated-countdown-timer-vue/#google_vignette
 
+Style : 
+    https://getcssscan.com/css-buttons-examples

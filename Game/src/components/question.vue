@@ -26,9 +26,9 @@ defineProps({
     .question {
         padding: 5px;
         margin: 5px;
-        border: 1px solid #6ce9f2;
+        /* border: 1px solid #6ce9f2; */
         border-radius: 5px;
-        cursor: pointer;
+        cursor: default;
         transition: background-color 0.3s;
         width: auto;
         height: auto;
@@ -36,8 +36,7 @@ defineProps({
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-    
+        align-items: center;    
     }
 
     img {
