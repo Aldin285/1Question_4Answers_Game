@@ -21,17 +21,22 @@
     return Math.floor(Math.random() * max);
   }
   // Liste des questions et la limate
-  const selectedQuestions = reactive([]);
-  const questionLimits = 3;
+  let selectedQuestions = reactive([]);
+  const questionLimits = 2;
 
   // Sélection des questions
-  for(; selectedQuestions.length<=questionLimits-1;){
-    const randInt = getRandomInt(data.length);
-    if(!selectedQuestions.includes(randInt)){
-      selectedQuestions.push(randInt);
+  function selectQuestions() {
+    selectedQuestions = reactive([]);
+    for(; selectedQuestions.length<=questionLimits-1;){
+      const randInt = getRandomInt(data.length);
+      if(!selectedQuestions.includes(randInt)){
+        selectedQuestions.push(randInt);
+      }
     }
+     console.log("Selected Questions : ", selectedQuestions);
   }
-  console.log("Selected Questions : ", selectedQuestions);
+  selectQuestions();
+ 
   // Index de la question courante
   const currentQuestionIndex = ref(selectedQuestions[questionLimits-1]);
 
@@ -152,6 +157,33 @@
     }
   }
 
+  // Reset game
+  function ResetGame(){
+
+    getStarted.value = true;
+    displayEndScreen.value = false;
+
+    selectQuestions();
+
+    currentQuestionIndex.value = selectedQuestions[questionLimits-1];
+    answerId.value = data[currentQuestionIndex.value].answerId;
+
+    // Réinitialise les styles et les variables
+    rightAnswerStyle.value = {};
+    wrongAnswerStyle.value = {};
+    disableButtons.value = false;
+    selectedAnswer.value = null;
+    stopTimer.value = false;
+    checkAnswer.value = false;
+    restartTimer.value = true;
+    totalScore.value = 0;
+
+    setTimeout(() => {
+      restartTimer.value = false;
+    }, 100);
+
+   
+  }
   
   
   onMounted(() => {
@@ -163,76 +195,79 @@
 </script>
 
 <template>
-  <div>
-    <div v-if="displayElements" class="displayElements">
+  <div class="screen-root">
 
-    <!-- Timer -->
-    <timer :timeLimit="20"
-     :stop="stopTimer" 
-     :restart="restartTimer"
-      @timeLeft='(tl) => timeLeft = tl'
-      @elapsedDash="(dash, length)=>{
-         dashLength = dash;
-         totalDashLength = length;
-      }" 
-      />
+    <transition name="fade" mode="out-in">
+      <div v-if="displayElements" class="displayElements" key="display">
 
-    <!-- Score -->
-     <score :dashLeft="dashLength" :totalDash="totalDashLength" :check="checkAnswer" @finalScore="(score) => totalScore = score" />
+      <!-- Timer -->
+      <timer :timeLimit="20"
+       :stop="stopTimer" 
+       :restart="restartTimer"
+        @timeLeft='(tl) => timeLeft = tl'
+        @elapsedDash="(dash, length)=>{
+           dashLength = dash;
+           totalDashLength = length;
+        }" 
+        />
 
-    <!--Question -->
-      <question :question="data[currentQuestionIndex].question"
-        :imgURL="data[currentQuestionIndex].imageURL" />
-    
-    <!-- Selection des réponses -->
+      <!-- Score -->
+       <score :dashLeft="dashLength" :totalDash="totalDashLength" :check="checkAnswer" @finalScore="(score) => totalScore = score" />
+
+      <!--Question -->
+        <question :question="data[currentQuestionIndex].question"
+          :imgURL="data[currentQuestionIndex].imageURL" />
       
-      <div class="answerSelect">
-
-         <div v-for="answer in data[currentQuestionIndex].answers" :key="answer.id" >
-           <answer   :id="answer.id"
-            :answer="answer.answerText"
-            :style="answerId === answer.id ? rightAnswerStyle : wrongAnswerStyle"
-            @click="CheckAnswer" :disabled="disableButtons"/>
-        </div>
+      <!-- Selection des réponses -->
         
-      </div>
+        <div class="answerSelect">
 
-    <footer class="app-footer">
-      <div class="footer-inner">
-        <p>© 2025 Quiz Game by Alla-Eddine BOUKABOU — built with Vue</p>
-      </div>
-    </footer>
+           <div v-for="answer in data[currentQuestionIndex].answers" :key="answer.id" >
+             <answer   :id="answer.id"
+              :answer="answer.answerText"
+              :style="answerId === answer.id ? rightAnswerStyle : wrongAnswerStyle"
+              @click="CheckAnswer" :disabled="disableButtons"/>
+          </div>
+          
+        </div>
 
-  </div>
+      <footer class="app-footer">
+        <div class="footer-inner">
+          <p>© 2025 Quiz Game by Alla-Eddine BOUKABOU — built with Vue</p>
+        </div>
+      </footer>
 
-  <!-- Get started screen -->
-  <div v-if="getStarted">
-    <div class="getStarted">
-      <h1>Welcome to the Quiz Game!</h1>
-      <button @click="{displayElements = true;getStarted=false}"  class="button-82-pushable">
-      <span class="button-82-shadow"></span>
-      <span class="button-82-edge"></span>
-      <span class="button-82-front text">
-        Get Started
-      </span>
-      </button>
     </div>
-  </div>
+    </transition>
 
-  <!-- End and restart screen -->
-  <div v-if="displayEndScreen">
-    <div class="getStarted">
-      <h1>Your final score is : {{ totalScore }}</h1>
-      <button @click="{displayElements = false;getStarted=true; displayEndScreen=false}"  class="button-82-pushable">
-      <span class="button-82-shadow"></span>
-      <span class="button-82-edge"></span>
-      <span class="button-82-front text">
-        Play again
-      </span>
-      </button>
-    </div>
-  </div>
+    <!-- Get started screen -->
+    <transition name="fade" mode="out-in">
+      <div v-if="getStarted" class="getStarted" key="start">
+        <h1>Welcome to the Quiz Game!</h1>
+        <button @click="{displayElements = true;getStarted=false}"  class="button-82-pushable">
+        <span class="button-82-shadow"></span>
+        <span class="button-82-edge"></span>
+        <span class="button-82-front text">
+          Get Started
+        </span>
+        </button>
+      </div>
+    </transition>
 
+    <!-- End screen -->
+    <transition name="fade" mode="out-in">
+      <div v-if="displayEndScreen" class="getStarted" key="end">
+        <h1>Your final score is :</h1>
+        <h1> {{ totalScore }}</h1>
+        <button @click="ResetGame"  class="button-82-pushable">
+        <span class="button-82-shadow"></span>
+        <span class="button-82-edge"></span>
+        <span class="button-82-front text">
+          Play again
+        </span>
+        </button>
+      </div>
+    </transition>
 
   </div>
 </template>
@@ -272,6 +307,27 @@
   .app-footer .footer-inner{
     max-width: 1000px;
     margin: 0 auto;
+  }
+
+  /* Screen transition animations */
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 300ms ease, transform 300ms ease;
+  }
+  .fade-enter-from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.995);
+  }
+  .fade-enter-to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  .fade-leave-from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  .fade-leave-to {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.995);
   }
 
   /* Get started button style */
