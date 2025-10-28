@@ -41,11 +41,27 @@ onMounted(() => {
 </script>
 
 <template>
-<div>
-   <p>Total score : {{ totalScore }}</p>
+<div class="score-root">
+    <div class="container">
+        <p>Total score : {{ totalScore }}</p>
+     </div>
 </div>
 </template>
 
 <style scoped>
+
+.score-root {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 998; 
+  pointer-events: none; 
+}
+
+.container {
+  height: auto;
+  width: auto;
+  position: relative;
+}
 
 </style>

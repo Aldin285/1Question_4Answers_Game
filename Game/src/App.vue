@@ -191,7 +191,6 @@
       :imgURL="data[currentQuestionIndex].imageURL" />
   
   <!-- Selection des réponses -->
-    <h1>Select one of the following answers: </h1>
     
     <div class="answerSelect">
 
@@ -214,7 +213,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 5em;
+    gap: 3.5em;
     padding-right:10em;
     padding-left:10em;
   }

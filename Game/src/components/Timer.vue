@@ -72,8 +72,7 @@
 </script>
 
 <template>
-    <div>
-  <h1>Chrono : </h1>
+  <div class="timer-root">
    <div class="container">
     <svg class="svg" viewBox="0 0 100 100">
       <g class="circle">
@@ -101,7 +100,16 @@
 </template>
 
 <style scoped>
-    .container {
+.timer-root {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999; 
+  pointer-events: none; 
+}
+
+
+.container {
   height: 150px;
   width: 150px;
   position: relative;

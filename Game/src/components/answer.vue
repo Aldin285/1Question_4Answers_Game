@@ -28,30 +28,15 @@ defineProps({
 </template>
 
 <style scoped>
-    .answer {
-        padding: 10px;
-        margin: 5px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        width: 20em;
-        height: 7em;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
     button {
-        padding: 10px;
+        padding: 5px;
         margin: 5px;
         border: 1px solid #ccc;
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s;
-        width: 20em;
-        height: 7em;
+        width: 15em;
+        height: 4em;
         background-color: transparent;
         color: white;
         font-size: 150%;
@@ -60,5 +45,7 @@ defineProps({
         display: flex;
         justify-content: center;
         align-items: center;
+
+        overflow-wrap: break-word;
     }
 </style>

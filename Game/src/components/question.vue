@@ -24,7 +24,7 @@ defineProps({
 
 <style scoped>
     .question {
-        padding: 10px;
+        padding: 5px;
         margin: 5px;
         border: 1px solid #6ce9f2;
         border-radius: 5px;
@@ -37,12 +37,16 @@ defineProps({
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    
     }
 
     img {
         max-width: 35em;
-        max-height: 20em;
-        margin-bottom: 1em;
+        max-height: 25em;
+
+        min-width: 20em;
+        min-height: 15em;
+        
         border-radius: 3%;
     }
 </style>
