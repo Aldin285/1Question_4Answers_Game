@@ -2,6 +2,7 @@
   import answer from './components/Answer.vue';
   import question from './components/Question.vue';
   import timer from './components/Timer.vue';
+  import score from './components/Score.vue';
   import data from "./data/quiz.json"
 
   import { ref, onMounted,watchEffect, computed, reactive } from 'vue';
@@ -42,14 +43,20 @@
   const timeLeft = ref();
   const stopTimer = ref(false);
   const restartTimer = ref(false);
+  const dashLength = ref(0);
+  const totalDashLength = ref(0);
+
+  // Score
+  const checkAnswer = ref(false);
 
   function CheckAnswer(e) {
     // Récupère l'id de la réponse sélectionnée
     selectedAnswer.value = e.target.id;
 
     // Changement de style par rapport à la réponse sélectionnée
+    // Bonne réponse
     if(answerId.value == selectedAnswer.value){
-      console.log("You picked the right answer")
+      // console.log("You picked the right answer")
 
       rightAnswerStyle.value = {
         border: '2px solid green',
@@ -60,8 +67,11 @@
       wrongAnswerStyle.value = {
         cursor: 'not-allowed',
       };
+
+      checkAnswer.value = true;
     }else{
-      console.log("You picked the wrong answer bug")
+      // Mauvaise réponse
+      // console.log("You picked the wrong answer bug")
 
       rightAnswerStyle.value = {
         border: '2px solid green',
@@ -93,6 +103,7 @@
         disableButtons.value = false;
         selectedAnswer.value = null;
         stopTimer.value = false;
+        checkAnswer.value = false;
         restartTimer.value = true;
         setTimeout(() => {
           restartTimer.value = false;
@@ -162,10 +173,22 @@
   <div class="displayElements">
 
   <!-- Timer -->
-  <timer :timeLimit="2" :stop="stopTimer" :restart="restartTimer" @timeLeft='(tl) => timeLeft = tl' />
+  <timer :timeLimit="20"
+   :stop="stopTimer" 
+   :restart="restartTimer"
+    @timeLeft='(tl) => timeLeft = tl'
+    @elapsedDash="(dash, length)=>{
+       dashLength = dash;
+       totalDashLength = length;
+    }" 
+    />
+
+  <!-- Score -->
+   <score :dashLeft="dashLength" :totalDash="totalDashLength" :check="checkAnswer" />
 
   <!--Question -->
-    <question :question="data[currentQuestionIndex].question"  :imgURL="data[currentQuestionIndex].imageURL" />
+    <question :question="data[currentQuestionIndex].question"
+      :imgURL="data[currentQuestionIndex].imageURL" />
   
   <!-- Selection des réponses -->
     <h1>Select one of the following answers: </h1>
@@ -173,7 +196,10 @@
     <div class="answerSelect">
 
        <div v-for="answer in data[currentQuestionIndex].answers" :key="answer.id" >
-         <answer   :id="answer.id" :answer="answer.answerText" :style="answerId === answer.id ? rightAnswerStyle : wrongAnswerStyle"  @click="CheckAnswer" :disabled="disableButtons"/>
+         <answer   :id="answer.id"
+          :answer="answer.answerText"
+          :style="answerId === answer.id ? rightAnswerStyle : wrongAnswerStyle"
+          @click="CheckAnswer" :disabled="disableButtons"/>
       </div>
       
     </div>

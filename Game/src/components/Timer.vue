@@ -23,8 +23,8 @@
   time.setSeconds(time.getSeconds() + props.timeLimit);
 
   let chrono = useTimer(time)
- 
-  const totalLength = 2 * Math.PI * 45;
+
+  const totalLength = ref(2 * Math.PI * 45);
 
 
   const timeFraction = computed(() =>{
@@ -36,10 +36,10 @@
   return Math.max(0,  adjFraction);
 });
 
-  let elapsedDash = computed(() => (timeFraction.value * totalLength))
+  const elapsedDash = computed(() => (timeFraction.value * totalLength.value))
 
    // Emit
-  const emit = defineEmits(['timeLeft']);
+  const emit = defineEmits(['timeLeft','elapsedDash']);
 
   onMounted(() => {
   watchEffect(async () => {
@@ -65,6 +65,7 @@
     }
 
     emit('timeLeft', chrono.seconds.value);
+    emit('elapsedDash', elapsedDash.value, totalLength.value);
    })
   });
 

@@ -3,7 +3,7 @@ Tâches à faire :
     Ajouter des valeurs max-min aux différents éléments du site ( button answers, question text) 
     Changement de couleurs du chrono par rapport au temps restant
 
-    Ajouter un sytème de score
+    Ajouter un bouton recommencer
     Un get started menu
     Ajouter une page de fin 
 
