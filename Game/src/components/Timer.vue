@@ -6,9 +6,13 @@
   const props = defineProps({
       timeLimit:{
           type: Number,
-          required: true
+          default: 20
       },
       stop:{
+        type: Boolean,
+        default: false
+      },
+      restart:{
         type: Boolean,
         default: false
       }
@@ -18,7 +22,7 @@
   const time = new Date();
   time.setSeconds(time.getSeconds() + props.timeLimit);
 
-  const chrono = useTimer(time)
+  let chrono = useTimer(time)
  
   const totalLength = 2 * Math.PI * 45;
 
@@ -32,7 +36,7 @@
   return Math.max(0,  adjFraction);
 });
 
-  const elapsedDash = computed(() => (timeFraction.value * totalLength))
+  let elapsedDash = computed(() => (timeFraction.value * totalLength))
 
    // Emit
   const emit = defineEmits(['timeLeft']);
@@ -41,17 +45,28 @@
   watchEffect(async () => {
     
     if(chrono.isExpired.value) {
-        console.log('The timer has expired')
+        // console.log('The timer has expired')
     }
 
     if (props.stop){
       console.log("Chrono stopped")
       chrono.pause();
+    }else{
+      chrono.resume();
+    }
+
+    if (props.restart){
+      console.log("Chrono restarted")
+
+       const newTime = new Date();
+       newTime.setSeconds(newTime.getSeconds() + props.timeLimit);
+
+      chrono.restart(newTime);
     }
 
     emit('timeLeft', chrono.seconds.value);
-  })
-})
+   })
+  });
 
 </script>
 

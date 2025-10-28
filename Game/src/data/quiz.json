@@ -23,6 +23,42 @@
         {"id": 4, "answerText": "Beast"}
     ],
     "answerId":3
+    },{
+
+    "quesionId": 3,
+    "question": "From which charachter can you buy the following item?",
+    "imageURL": "/images/stingShard.webp",
+    "answers":[
+        {"id": 1, "answerText": "Forge Daughter"},
+        {"id": 2, "answerText": "Twelfth Architect"},
+        {"id": 3, "answerText": "Jubilana"},
+        {"id": 4, "answerText": "Grindle"}
+    ],
+    "answerId":1
+    },{
+
+    "quesionId": 4,
+    "question": "In which part of the Citadel can you find this item?",
+    "imageURL": "/images/cogfly.webp",
+    "answers":[
+        {"id": 1, "answerText": "Songclave"},
+        {"id": 2, "answerText": "Whispering Vaults"},
+        {"id": 3, "answerText": "Cogwork Core"},
+        {"id": 4, "answerText": "High Halls"}
+    ],
+    "answerId":4
+    },{
+
+    "quesionId": 5,
+    "question": "In which area does the following boss appear?",
+    "imageURL": "/images/widow.webp",
+    "answers":[
+        {"id": 1, "answerText": "Shellwood"},
+        {"id": 2, "answerText": "Bellhart"},
+        {"id": 3, "answerText": "Underworks"},
+        {"id": 4, "answerText": "Choral Chambers"}
+    ],
+    "answerId":2
     }
 
 ]

@@ -1,11 +1,11 @@
 Tâches à faire : 
 
     Ajouter des valeurs max-min aux différents éléments du site ( button answers, question text) 
-    Empecher la selection des réponses quand le chrono est 0 
-    Afficher la bonne réponse quand le chrono et à 0 
     Changement de couleurs du chrono par rapport au temps restant
 
-    emit le temps restant + une fonction qui arrete le chrono quand la valeur est vrais
+    Ajouter un sytème de score
+    Un get started menu
+    Ajouter une page de fin 
 
 -----------------------------------------------------
 CSS : 
