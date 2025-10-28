@@ -52,6 +52,34 @@
 
   // Score
   const checkAnswer = ref(false);
+  const totalScore = ref(0);
+
+  // Fonction pour passer à la question suivante et afficher le score final
+  function NextQuestion() {
+     setTimeout(() => {
+      if(selectedQuestions.indexOf(currentQuestionIndex.value) >0){
+        currentQuestionIndex.value = selectedQuestions[selectedQuestions.indexOf(currentQuestionIndex.value)-1];
+        answerId.value = data[currentQuestionIndex.value].answerId;
+
+        // Réinitialise les styles et les variables
+        rightAnswerStyle.value = {};
+        wrongAnswerStyle.value = {};
+        disableButtons.value = false;
+        selectedAnswer.value = null;
+        stopTimer.value = false;
+        checkAnswer.value = false;
+        restartTimer.value = true;
+        setTimeout(() => {
+          restartTimer.value = false;
+        }, 100);
+    
+      }else{
+           displayElements.value = false;
+           displayEndScreen.value = true;
+        console.log("Quiz finished")
+      }
+    }, 3000);
+  }
 
   function CheckAnswer(e) {
     // Récupère l'id de la réponse sélectionnée
@@ -96,27 +124,7 @@
     stopTimer.value = true;
 
     // Changer la question
-    setTimeout(() => {
-      if(selectedQuestions.indexOf(currentQuestionIndex.value) >0){
-        currentQuestionIndex.value = selectedQuestions[selectedQuestions.indexOf(currentQuestionIndex.value)-1];
-        answerId.value = data[currentQuestionIndex.value].answerId;
-
-        // Réinitialise les styles et les variables
-        rightAnswerStyle.value = {};
-        wrongAnswerStyle.value = {};
-        disableButtons.value = false;
-        selectedAnswer.value = null;
-        stopTimer.value = false;
-        checkAnswer.value = false;
-        restartTimer.value = true;
-        setTimeout(() => {
-          restartTimer.value = false;
-        }, 100);
-    
-      }else{
-        console.log("Quiz finished")
-      }
-    }, 3000);
+    NextQuestion();
     
   }
 
@@ -140,26 +148,7 @@
       disableButtons.value = true;
 
       // Changer la question
-    setTimeout(() => {
-      if(selectedQuestions.indexOf(currentQuestionIndex.value) >0){
-        currentQuestionIndex.value = selectedQuestions[selectedQuestions.indexOf(currentQuestionIndex.value)-1];
-        answerId.value = data[currentQuestionIndex.value].answerId;
-
-        // Réinitialise les styles et les variables
-        rightAnswerStyle.value = {};
-        wrongAnswerStyle.value = {};
-        disableButtons.value = false;
-        selectedAnswer.value = null;
-        stopTimer.value = false;
-        restartTimer.value = true;
-        setTimeout(() => {
-          restartTimer.value = false;
-        }, 100);
-    
-      }else{
-        console.log("Quiz finished")
-      }
-    }, 3000);
+      NextQuestion();
     }
   }
 
@@ -189,7 +178,7 @@
       />
 
     <!-- Score -->
-     <score :dashLeft="dashLength" :totalDash="totalDashLength" :check="checkAnswer" />
+     <score :dashLeft="dashLength" :totalDash="totalDashLength" :check="checkAnswer" @finalScore="(score) => totalScore = score" />
 
     <!--Question -->
       <question :question="data[currentQuestionIndex].question"
@@ -216,6 +205,7 @@
 
   </div>
 
+  <!-- Get started screen -->
   <div v-if="getStarted">
     <div class="getStarted">
       <h1>Welcome to the Quiz Game!</h1>
@@ -228,6 +218,22 @@
       </button>
     </div>
   </div>
+
+  <!-- End and restart screen -->
+  <div v-if="displayEndScreen">
+    <div class="getStarted">
+      <h1>Your final score is : {{ totalScore }}</h1>
+      <button @click="{displayElements = false;getStarted=true; displayEndScreen=false}"  class="button-82-pushable">
+      <span class="button-82-shadow"></span>
+      <span class="button-82-edge"></span>
+      <span class="button-82-front text">
+        Play again
+      </span>
+      </button>
+    </div>
+  </div>
+
+
   </div>
 </template>
 

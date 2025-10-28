@@ -3,7 +3,7 @@ Tâches à faire :
     Ajouter des valeurs max-min aux différents éléments du site ( button answers, question text) 
     Changement de couleurs du chrono par rapport au temps restant
 
-    Un get started menu
+    Reset la game quand on clique sur rejouer 
     Ajouter une page de fin avec un bouton pour recommencer
     Changer l'emplacement des réponses à chaque fois que la même question apparait
     ajouter des effets de sons selon la réponse 

@@ -30,11 +30,15 @@ function calculateScore(){
     currentScore.value = 0;
 }
 
+// Emit
+const emit = defineEmits(['finalScore']);
+
 onMounted(() => {
   watchEffect(async () => {
     if (props.check){
         calculateScore();
     }
+    emit('finalScore', totalScore.value);
   })
 });
 
