@@ -22,7 +22,7 @@
   }
   // Liste des questions et la limate
   let selectedQuestions = reactive([]);
-  const questionLimits = 2;
+  const questionLimits = 5;
 
   // Sélection des questions
   function selectQuestions() {

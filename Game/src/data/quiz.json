@@ -59,6 +59,125 @@
         {"id": 4, "answerText": "Choral Chambers"}
     ],
     "answerId":2
-    }
+    },{
 
+    "quesionId": 6,
+    "question": "Who is courier Tipp brother?",
+    "imageURL": "/images/TippNPill.webp",
+    "answers":[
+        {"id": 1, "answerText": "Pebb"},
+        {"id": 2, "answerText": "Nuu"},
+        {"id": 3, "answerText": "Pill"},
+        {"id": 4, "answerText": "Kratt"}
+    ],
+    "answerId":3
+    },{
+        
+    "quesionId": 7,
+    "question": "Which NPC is NOT part of the flea caravan?",
+    "imageURL": "/images/fleaCaravan.webp",
+    "answers":[
+        {"id": 1, "answerText": "Pavo"},
+        {"id": 2, "answerText": "Varga"},
+        {"id": 3, "answerText": "Vog"},
+        {"id": 4, "answerText": "Grishkin"}
+    ],
+    "answerId":1
+    },{
+        
+    "quesionId": 8,
+    "question": "Which item can you buy from the twelfth architect?",
+    "imageURL": "/images/twelfthArchitect.webp",
+    "answers":[
+        {"id": 1, "answerText": "Pebb"},
+        {"id": 2, "answerText": "Rosary Cannon"},
+        {"id": 3, "answerText": "Spider Strings"},
+        {"id": 4, "answerText": "Scuttlebrace"}
+    ],
+    "answerId":4
+    },{
+        
+    "quesionId": 9,
+    "question": "Which item does Disgraced Chef Lugoli drop?",
+    "imageURL": "/images/lugoli.webp",
+    "answers":[
+        {"id": 1, "answerText": "Mossberry Stew"},
+        {"id": 2, "answerText": "Crustnut"},
+        {"id": 3, "answerText": "Vintage Nectar"},
+        {"id": 4, "answerText": "Pickled Muckmaggot"}
+    ],
+    "answerId":4
+    },{
+        
+    "quesionId": 10,
+    "question": "Who is Gron's brother?",
+    "imageURL": "/images/TippNPill.webp",
+    "answers":[
+        {"id": 1, "answerText": "Lace"},
+        {"id": 2, "answerText": "Signis"},
+        {"id": 3, "answerText": "Styx"},
+        {"id": 4, "answerText": "Loam"}
+    ],
+    "answerId":2
+    },{
+        
+    "quesionId": 11,
+    "question": "How many Spool fragments do you need to craft one?",
+    "imageURL": "/images/spool.webp",
+    "answers":[
+        {"id": 1, "answerText": "1"},
+        {"id": 2, "answerText": "2"},
+        {"id": 3, "answerText": "3"},
+        {"id": 4, "answerText": "4"}
+    ],
+    "answerId":2
+    },{
+        
+    "quesionId": 12,
+    "question": "Which of the following is NOT an ancestral art?",
+    "imageURL": "/images/ancestralArt.webp",
+    "answers":[
+        {"id": 1, "answerText": "Beastling Call"},
+        {"id": 2, "answerText": "Swift Step"},
+        {"id": 3, "answerText": "Thread Storm"},
+        {"id": 4, "answerText": "Needoling"}
+    ],
+    "answerId":3
+    },{
+        
+    "quesionId": 13,
+    "question": "Which silk skill can you learn from First Sinner?",
+    "imageURL": "/images/firstSinner.webp",
+    "answers":[
+        {"id": 1, "answerText": "Sharpdart"},
+        {"id": 2, "answerText": "Cross Stitch"},
+        {"id": 3, "answerText": "Pale Nails"},
+        {"id": 4, "answerText": "Rune Rage"}
+    ],
+    "answerId":4
+    },{
+        
+    "quesionId": 14,
+    "question": "Which of the following bosses is located in Shellwood?",
+    "imageURL": "/images/shellwood.webp",
+    "answers":[
+        {"id": 1, "answerText": "Sister Splinter"},
+        {"id": 2, "answerText": "Trobbio"},
+        {"id": 3, "answerText": "Craggler"},
+        {"id": 4, "answerText": "Broodmother"}
+    ],
+    "answerId":1
+    },{
+        
+    "quesionId": 15,
+    "question": "Which of the following merchants does NOT sell/give a Crafting kit?",
+    "imageURL": "/images/craftingKit.webp",
+    "answers":[
+        {"id": 1, "answerText": "Creige"},
+        {"id": 2, "answerText": "Mottled Skarr"},
+        {"id": 3, "answerText": "Forge Daughter"},
+        {"id": 4, "answerText": "Grindle "}
+    ],
+    "answerId":2
+    }
 ]

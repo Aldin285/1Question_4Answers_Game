@@ -41,7 +41,7 @@ defineProps({
 
     img {
         max-width: 35em;
-        max-height: 25em;
+        max-height: 17.5em;
 
         min-width: 20em;
         min-height: 15em;
