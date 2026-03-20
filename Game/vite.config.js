@@ -6,7 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/',
+  base: '/1Question_4Answers_Game',
   plugins: [
     vue(),
     vueDevTools(),
