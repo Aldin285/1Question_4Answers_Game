@@ -12,6 +12,13 @@
   const displayElements = ref(false);
   const displayEndScreen = ref(false);
 
+  const baseUrl = import.meta.env.BASE_URL;
+  const resolveImagePath = (path = '') => {
+    if (!path) return '';
+    if (/^https?:\/\//i.test(path)) return path;
+    return `${baseUrl}${path.replace(/^\/+/, '')}`;
+  };
+
   // Pour la réponse sélectionnée
   const selectedAnswer = ref(null);
 
@@ -216,7 +223,7 @@
 
       <!--Question -->
         <question :question="data[currentQuestionIndex].question"
-          :imgURL="data[currentQuestionIndex].imageURL" />
+          :imgURL="resolveImagePath(data[currentQuestionIndex].imageURL)" />
       
       <!-- Selection des réponses -->
         

@@ -7,7 +7,7 @@ defineProps({
     },
     imgURL: {
         type: String,
-        default: '/images/questionMark.webp'
+        default: `${import.meta.env.BASE_URL}images/questionMark.webp`
         
     }
 });
