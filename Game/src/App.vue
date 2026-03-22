@@ -1,5 +1,5 @@
 <script setup>
-  import answer from './components/Answer.vue';
+  import AnswerOption from './components/answer.vue';
   import question from './components/Question.vue';
   import timer from './components/Timer.vue';
   import score from './components/Score.vue';
@@ -40,7 +40,7 @@
         selectedQuestions.push(randInt);
       }
     }
-     console.log("Selected Questions : ", selectedQuestions);
+    //  console.log("Selected Questions : ", selectedQuestions);
   }
   selectQuestions();
  
@@ -229,11 +229,11 @@
         
         <div class="answerSelect">
 
-           <div v-for="answer in data[currentQuestionIndex].answers" :key="answer.id" >
-             <answer   :id="answer.id"
-              :answer="answer.answerText"
-              :style="answerId === answer.id ? rightAnswerStyle : wrongAnswerStyle"
-              @click="CheckAnswer" :disabled="disableButtons"/>
+          <div v-for="option in data[currentQuestionIndex].answers" :key="option.id" >
+              <AnswerOption :id="option.id"
+                :answer="option.answerText"
+                :style="answerId === option.id ? rightAnswerStyle : wrongAnswerStyle"
+                @click="CheckAnswer" :disabled="disableButtons"/>
           </div>
           
         </div>
