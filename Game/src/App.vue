@@ -1,8 +1,9 @@
 <script setup>
-  import AnswerOption from './components/answer.vue';
-  import question from './components/Question.vue';
-  import timer from './components/Timer.vue';
-  import score from './components/Score.vue';
+  import OptionBox from './Views/OptionBox/OptionBox.vue';
+  import question from './Views/Question/Question.vue';
+  import timer from './Views/Timer/Timer.vue';
+  import score from './Views/Score/Score.vue';
+  import Footer from './Views/Footer/Footer.vue';
   import data from "./data/quiz.json"
 
   import { ref, onMounted,watchEffect, computed, reactive } from 'vue';
@@ -230,7 +231,7 @@
         <div class="answerSelect">
 
           <div v-for="option in data[currentQuestionIndex].answers" :key="option.id" >
-              <AnswerOption :id="option.id"
+              <OptionBox :id="option.id"
                 :answer="option.answerText"
                 :style="answerId === option.id ? rightAnswerStyle : wrongAnswerStyle"
                 @click="CheckAnswer" :disabled="disableButtons"/>
@@ -238,11 +239,8 @@
           
         </div>
 
-      <footer class="app-footer">
-        <div class="footer-inner">
-          <p>© 2025 Quiz Game by Alla-Eddine BOUKABOU — built with Vue</p>
-        </div>
-      </footer>
+        <!-- Calling the footer component -->
+        <Footer />
 
     </div>
     </transition>
@@ -281,175 +279,6 @@
 
 <style scoped>
  
-
-  /* Affichage des réponses */
-  .answerSelect{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 3.5em;
-    padding-right:10em;
-    padding-left:10em;
-  }
-
-  /* affichage des éléments */
-  .displayElements{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Footer */
-  .app-footer{
-    width: 100%;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
-    color: rgba(255,255,255,0.95);
-  }
-
-  .app-footer .footer-inner{
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  /* Screen transition animations */
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity 300ms ease, transform 300ms ease;
-  }
-  .fade-enter-from {
-    opacity: 0;
-    transform: translateY(12px) scale(0.995);
-  }
-  .fade-enter-to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  .fade-leave-from {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  .fade-leave-to {
-    opacity: 0;
-    transform: translateY(-12px) scale(0.995);
-  }
-
-  /* Get started button style */
-
-   .getStarted {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    gap: 2em;
-    color: white;
-  }
-
-  .button-82-pushable {
-    position: relative;
-    border: none;
-    background: transparent;
-    padding: 0;
-    cursor: pointer;
-    outline-offset: 4px;
-    transition: filter 250ms;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-  }
-
-  .button-82-shadow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    background: hsl(0deg 0% 0% / 0.25);
-    will-change: transform;
-    transform: translateY(2px);
-    transition:
-      transform
-      600ms
-      cubic-bezier(.3, .7, .4, 1);
-  }
-
-  .button-82-edge {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    background: linear-gradient(
-      to left,
-      hsl(340deg 100% 16%) 0%,
-      hsl(340deg 100% 32%) 8%,
-      hsl(340deg 100% 32%) 92%,
-      hsl(340deg 100% 16%) 100%
-    );
-  }
-
-  .button-82-front {
-    display: block;
-    position: relative;
-    padding: 12px 27px;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    color: white;
-    background: hsl(345deg 100% 47%);
-    will-change: transform;
-    transform: translateY(-4px);
-    transition:
-      transform
-      600ms
-      cubic-bezier(.3, .7, .4, 1);
-  }
-
-  @media (min-width: 768px) {
-    .button-82-front {
-      font-size: 1.25rem;
-      padding: 12px 42px;
-    }
-  }
-
-  .button-82-pushable:hover {
-    filter: brightness(110%);
-    -webkit-filter: brightness(110%);
-  }
-
-  .button-82-pushable:hover .button-82-front {
-    transform: translateY(-6px);
-    transition:
-      transform
-      250ms
-      cubic-bezier(.3, .7, .4, 1.5);
-  }
-
-  .button-82-pushable:active .button-82-front {
-    transform: translateY(-2px);
-    transition: transform 34ms;
-  }
-
-  .button-82-pushable:hover .button-82-shadow {
-    transform: translateY(4px);
-    transition:
-      transform
-      250ms
-      cubic-bezier(.3, .7, .4, 1.5);
-  }
-
-  .button-82-pushable:active .button-82-shadow {
-    transform: translateY(1px);
-    transition: transform 34ms;
-  }
-
-  .button-82-pushable:focus:not(:focus-visible) {
-    outline: none;
-  }
+@import url("./global.css");
 
 </style>

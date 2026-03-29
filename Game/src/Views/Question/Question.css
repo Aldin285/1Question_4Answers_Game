@@ -1,29 +1,4 @@
-<script setup>
-
-defineProps({
-    question:{
-        type: String,
-        required: true
-    },
-    imgURL: {
-        type: String,
-        default: `${import.meta.env.BASE_URL}images/questionMark.webp`
-        
-    }
-});
-
-</script>
-
-<template>
-    <div class="question">
-        <img  :src="imgURL" />
-        <h2>{{ question }}</h2>
-    </div>
-    
-</template>
-
-<style scoped>
-    .question {
+ .question {
         padding: 5px;
         margin: 5px;
         /* border: 1px solid #6ce9f2; */
@@ -48,4 +23,3 @@ defineProps({
         
         border-radius: 3%;
     }
-</style>

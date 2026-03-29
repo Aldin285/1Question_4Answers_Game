@@ -53,26 +53,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
-.score-root {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  z-index: 998; 
-  pointer-events: none; 
-}
-
-.container {
-  height: auto;
-  width: auto;
-  position: relative;
-
-  /* From https://css.glass */
-  background: rgba(51, 43, 43, 0.35);
-  border-radius: 5px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
+@import url("./Score.css");
 
 </style>
