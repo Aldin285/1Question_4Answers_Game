@@ -3,7 +3,6 @@
   import question from '../../Components/Question/Question.vue';
   import timer from '../../Components/Timer/Timer.vue';
   import score from '../../Components/Score/Score.vue';
-  import Footer from '../Footer/Footer.vue';
 
   import { ref, onMounted, watchEffect } from 'vue';
 
@@ -104,7 +103,6 @@
 
     // Emit check answer event
     emit('checkAnswer', {
-      selectedId: selectedAnswer.value,
       isCorrect: props.answerId == selectedAnswer.value
     });
 
@@ -115,18 +113,22 @@
   // Annule la séléction de réponse quand le temps est écoulé
   function TimeOut() {
     if (timeLeft.value == 0) {
+
+      // Affiche la bonne réponse 
       rightAnswerStyle.value = {
         border: '2px solid green',
         backgroundColor: 'lightgreen',
         cursor: 'not-allowed',
       };
       
+      // Affiche les mauvaises réponses
       wrongAnswerStyle.value = {
         border: '2px solid red',
         backgroundColor: '#ff7f7f',
         cursor: 'not-allowed',
       };
 
+      // Désactive les boutons 
       disableButtons.value = true;
 
       emit('timeOut');
@@ -162,7 +164,7 @@
       :dashLeft="dashLength" 
       :totalDash="totalDashLength" 
       :check="checkAnswer" 
-      @finalScore="(score) => totalScore = score" 
+      @finalScore="(score) =>{emit('scoreUpdate', score)}" 
     />
 
     <!-- Question -->

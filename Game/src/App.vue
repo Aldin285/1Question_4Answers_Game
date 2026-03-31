@@ -10,6 +10,7 @@ import GameDisplay from './Views/GameDisplay/GameDisplay.vue';
   const displayElements = ref(false);
   const displayEndScreen = ref(false);
 
+  // Fonction pour résoudre le chemin de l'image
   const baseUrl = import.meta.env.BASE_URL;
   const resolveImagePath = (path = '') => {
     if (!path) return '';
@@ -18,11 +19,11 @@ import GameDisplay from './Views/GameDisplay/GameDisplay.vue';
   };
 
   // Organisation des questions
-  // Générer un nombre aléa 
+  // Générer un nombre aléatoire
    function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
-  // Liste des questions et la limate
+  // Liste des questions et la limite de questions à afficher
   let selectedQuestions = reactive([]);
   const questionLimits = 5;
 
@@ -48,7 +49,7 @@ import GameDisplay from './Views/GameDisplay/GameDisplay.vue';
   // Score
   const totalScore = ref(0);
 
-  // Fonction pour passer à la question suivante et afficher le score final
+  // Fonction pour passer à la question suivante et afficher le score 
   function NextQuestion() {
     if(selectedQuestions.indexOf(currentQuestionIndex.value) > 0){
       currentQuestionIndex.value = selectedQuestions[selectedQuestions.indexOf(currentQuestionIndex.value)-1];
@@ -73,6 +74,7 @@ import GameDisplay from './Views/GameDisplay/GameDisplay.vue';
     totalScore.value = 0;
   }
   
+
   
   onMounted(() => {
     watchEffect(async () => {
@@ -80,7 +82,7 @@ import GameDisplay from './Views/GameDisplay/GameDisplay.vue';
     })
   });
 
-  // Handle events from GameDisplay
+  // Handle events from GameDisplay (does nothing at the moment)
   function handleCheckAnswer(answerData) {
     // Update score based on answer correctness
     if (answerData.isCorrect) {
@@ -110,11 +112,13 @@ import GameDisplay from './Views/GameDisplay/GameDisplay.vue';
         <GameDisplay 
           :currentQuestion="data[currentQuestionIndex]"
           :answerId="answerId"
-          :resolveImagePath="resolveImagePath"
-          @checkAnswer="handleCheckAnswer"
+          :imagePath="resolveImagePath"
+          @checkAnswer="(check)=>handleCheckAnswer(check)"
           @nextQuestion="handleNextQuestion"
           @timeOut="handleTimeOut"
+          @scoreUpdate="(score)=>totalScore = score"
         />
+         
       </div>
     </transition>
 
