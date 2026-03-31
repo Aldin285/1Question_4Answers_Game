@@ -111,7 +111,7 @@
         
     "quesionId": 10,
     "question": "Who is Gron's brother?",
-    "imageURL": "/images/TippNPill.webp",
+    "imageURL": "/images/Signis_and_Gron.webp",
     "answers":[
         {"id": 1, "answerText": "Lace"},
         {"id": 2, "answerText": "Signis"},

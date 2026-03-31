@@ -1,6 +1,7 @@
 <script setup>
   import Footer from './Views/Footer/Footer.vue';
 import GameDisplay from './Views/GameDisplay/GameDisplay.vue';
+import Button from './Components/Button/Button.vue';
   import data from "./data/quiz.json"
 
   import { ref, computed, reactive } from 'vue';
@@ -104,13 +105,10 @@ import GameDisplay from './Views/GameDisplay/GameDisplay.vue';
     <transition name="fade" mode="out-in">
       <div v-if="getStarted" class="getStarted" key="start">
         <h1>Welcome to the Quiz Game!</h1>
-        <button @click="{displayElements = true;getStarted=false}"  class="button-82-pushable">
-        <span class="button-82-shadow"></span>
-        <span class="button-82-edge"></span>
-        <span class="button-82-front text">
-          Get Started
-        </span>
-        </button>
+        <Button
+          text="Get Started"
+          @click="{ displayElements = true; getStarted = false }"
+        />
       </div>
     </transition>
 
