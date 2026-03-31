@@ -4,7 +4,7 @@
   import timer from '../../Components/Timer/Timer.vue';
   import score from '../../Components/Score/Score.vue';
 
-  import { ref, onMounted, watchEffect } from 'vue';
+  import { ref, onMounted, watch } from 'vue';
 
   // Props from parent (App.vue)
   const props = defineProps({
@@ -112,8 +112,6 @@
 
   // Annule la séléction de réponse quand le temps est écoulé
   function TimeOut() {
-    if (timeLeft.value == 0) {
-
       // Affiche la bonne réponse 
       rightAnswerStyle.value = {
         border: '2px solid green',
@@ -136,12 +134,11 @@
       // Changer la question
       NextQuestion();
     }
-  }
 
-  onMounted(() => {
-    watchEffect(async () => {
+  watch(timeLeft, (newValue) => {
+    if (newValue === 0 && !stopTimer.value) {
       TimeOut();
-    })
+    }
   });
 </script>
 
@@ -191,23 +188,5 @@
 </template>
 
 <style scoped>
-  /* Affichage des réponses */
-  .answerSelect {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 3.5em;
-    padding-right: 10em;
-    padding-left: 10em;
-  }
-
-  /* Affichage des éléments */
-  .displayElements {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+  @import url("./GameDisplay.css");
 </style>

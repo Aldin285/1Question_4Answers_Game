@@ -3,7 +3,7 @@
 import GameDisplay from './Views/GameDisplay/GameDisplay.vue';
   import data from "./data/quiz.json"
 
-  import { ref, onMounted, watchEffect, reactive } from 'vue';
+  import { ref, computed, reactive } from 'vue';
 
   // Affichage
   const getStarted = ref(true);
@@ -29,8 +29,8 @@ import GameDisplay from './Views/GameDisplay/GameDisplay.vue';
 
   // Sélection des questions
   function selectQuestions() {
-    selectedQuestions = reactive([]);
-    for(; selectedQuestions.length<=questionLimits-1;){
+    selectedQuestions.length = 0; // Clear array while maintaining reactivity
+    while(selectedQuestions.length < questionLimits){
       const randInt = getRandomInt(data.length);
       if(!selectedQuestions.includes(randInt)){
         selectedQuestions.push(randInt);
@@ -40,20 +40,21 @@ import GameDisplay from './Views/GameDisplay/GameDisplay.vue';
   }
   selectQuestions();
  
-  // Index de la question courante
-  const currentQuestionIndex = ref(selectedQuestions[questionLimits-1]);
+  // La position de la question actuelle dans la liste des questions sélectionnées
+  const currentQuestionPosition = ref(questionLimits - 1);
 
   // Id de la bonne réponse pour la question actuelle
-  const answerId = ref(data[currentQuestionIndex.value].answerId)
+  const currentQuestionIndex = computed(() => selectedQuestions[currentQuestionPosition.value]);
+  const answerId = ref(data[currentQuestionIndex.value].answerId);
 
   // Score
   const totalScore = ref(0);
 
   // Fonction pour passer à la question suivante et afficher le score 
   function NextQuestion() {
-    if(selectedQuestions.indexOf(currentQuestionIndex.value) > 0){
-      currentQuestionIndex.value = selectedQuestions[selectedQuestions.indexOf(currentQuestionIndex.value)-1];
-      answerId.value = data[currentQuestionIndex.value].answerId;
+    if(currentQuestionPosition.value > 0){
+      currentQuestionPosition.value--;
+      answerId.value = data[selectedQuestions[currentQuestionPosition.value]].answerId;
     }else{
       displayElements.value = false;
       displayEndScreen.value = true;
@@ -68,37 +69,16 @@ import GameDisplay from './Views/GameDisplay/GameDisplay.vue';
 
     selectQuestions();
 
-    currentQuestionIndex.value = selectedQuestions[questionLimits-1];
-    answerId.value = data[currentQuestionIndex.value].answerId;
+    currentQuestionPosition.value = questionLimits - 1;
+    answerId.value = data[selectedQuestions[currentQuestionPosition.value]].answerId;
 
     totalScore.value = 0;
-  }
-  
-
-  
-  onMounted(() => {
-    watchEffect(async () => {
-      selectQuestions();
-    })
-  });
-
-  // Handle events from GameDisplay (does nothing at the moment)
-  function handleCheckAnswer(answerData) {
-    // Update score based on answer correctness
-    if (answerData.isCorrect) {
-      console.log("Correct answer!");
-    } else {
-      console.log("Wrong answer!");
-    }
   }
 
   function handleNextQuestion() {
     NextQuestion();
   }
 
-  function handleTimeOut() {
-    console.log("Time's out from GameDisplay");
-  }
  
  
 </script>
@@ -113,9 +93,7 @@ import GameDisplay from './Views/GameDisplay/GameDisplay.vue';
           :currentQuestion="data[currentQuestionIndex]"
           :answerId="answerId"
           :imagePath="resolveImagePath"
-          @checkAnswer="(check)=>handleCheckAnswer(check)"
           @nextQuestion="handleNextQuestion"
-          @timeOut="handleTimeOut"
           @scoreUpdate="(score)=>totalScore = score"
         />
          
