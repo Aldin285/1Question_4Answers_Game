@@ -10,6 +10,7 @@
   height: auto;
   width: auto;
   position: relative;
+  padding: 0.5rem;
 
   /* From https://css.glass */
   background: rgba(51, 43, 43, 0.35);

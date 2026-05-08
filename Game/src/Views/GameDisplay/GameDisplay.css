@@ -5,9 +5,12 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    max-width: 60vw;
     gap: 3.5em;
     padding-right: 10em;
     padding-left: 10em;
+    padding-top: 2em;
+    padding-bottom: 2em;
   }
 
   /* Affichage des éléments */
@@ -18,11 +21,16 @@
     justify-content: center;
   }
 
+
   /* Mobile responsive */
   @media (max-width: 768px) {
     .answerSelect {
       gap: 1.5em;
       padding-right: 0.75em;
       padding-left: 0.75em;
+    }
+
+    .displayElements {
+      padding: 130px 0 0 0;
     }
   }

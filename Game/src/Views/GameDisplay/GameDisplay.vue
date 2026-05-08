@@ -146,7 +146,7 @@
   <div class="displayElements">
 
     <!-- Timer -->
-    <timer :timeLimit="50"
+    <timer :timeLimit="20"
       :stop="stopTimer" 
       :restart="restartTimer"
       @timeLeft='(tl) => timeLeft = tl'

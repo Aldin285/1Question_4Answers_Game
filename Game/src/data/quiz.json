@@ -1,6 +1,6 @@
 [
     {
-    "quesionId": 1,
+    "questionId": 1,
     "question": "Who is the main character of the game?",
     "imageURL": "/images/silksong.webp",
     "answers":[
@@ -13,7 +13,7 @@
 
     },{
 
-    "quesionId": 2,
+    "questionId": 2,
     "question": "What is the name of your first crest?",
     "imageURL": "/images/crest.webp",
     "answers":[
@@ -25,8 +25,8 @@
     "answerId":3
     },{
 
-    "quesionId": 3,
-    "question": "From which charachter can you buy the following item?",
+    "questionId": 3,
+    "question": "From which character can you buy the following item?",
     "imageURL": "/images/stingShard.webp",
     "answers":[
         {"id": 1, "answerText": "Forge Daughter"},
@@ -37,7 +37,7 @@
     "answerId":1
     },{
 
-    "quesionId": 4,
+    "questionId": 4,
     "question": "In which part of the Citadel can you find this item?",
     "imageURL": "/images/cogfly.webp",
     "answers":[
@@ -49,7 +49,7 @@
     "answerId":4
     },{
 
-    "quesionId": 5,
+    "questionId": 5,
     "question": "In which area does the following boss appear?",
     "imageURL": "/images/widow.webp",
     "answers":[
@@ -61,8 +61,8 @@
     "answerId":2
     },{
 
-    "quesionId": 6,
-    "question": "Who is courier Tipp brother?",
+    "questionId": 6,
+    "question": "Who is Courier Tipp's brother?",
     "imageURL": "/images/TippNPill.webp",
     "answers":[
         {"id": 1, "answerText": "Pebb"},
@@ -73,7 +73,7 @@
     "answerId":3
     },{
         
-    "quesionId": 7,
+    "questionId": 7,
     "question": "Which NPC is NOT part of the flea caravan?",
     "imageURL": "/images/fleaCaravan.webp",
     "answers":[
@@ -85,8 +85,8 @@
     "answerId":1
     },{
         
-    "quesionId": 8,
-    "question": "Which item can you buy from the twelfth architect?",
+    "questionId": 8,
+    "question": "Which item can you buy from the Twelfth Architect?",
     "imageURL": "/images/twelfthArchitect.webp",
     "answers":[
         {"id": 1, "answerText": "Pebb"},
@@ -97,7 +97,7 @@
     "answerId":4
     },{
         
-    "quesionId": 9,
+    "questionId": 9,
     "question": "Which item does Disgraced Chef Lugoli drop?",
     "imageURL": "/images/lugoli.webp",
     "answers":[
@@ -109,7 +109,7 @@
     "answerId":4
     },{
         
-    "quesionId": 10,
+    "questionId": 10,
     "question": "Who is Gron's brother?",
     "imageURL": "/images/Signis_and_Gron.webp",
     "answers":[
@@ -121,7 +121,7 @@
     "answerId":2
     },{
         
-    "quesionId": 11,
+    "questionId": 11,
     "question": "How many Spool fragments do you need to craft one?",
     "imageURL": "/images/spool.webp",
     "answers":[
@@ -133,7 +133,7 @@
     "answerId":2
     },{
         
-    "quesionId": 12,
+    "questionId": 12,
     "question": "Which of the following is NOT an ancestral art?",
     "imageURL": "/images/ancestralArt.webp",
     "answers":[
@@ -145,7 +145,7 @@
     "answerId":3
     },{
         
-    "quesionId": 13,
+    "questionId": 13,
     "question": "Which silk skill can you learn from First Sinner?",
     "imageURL": "/images/firstSinner.webp",
     "answers":[
@@ -157,7 +157,7 @@
     "answerId":4
     },{
         
-    "quesionId": 14,
+    "questionId": 14,
     "question": "Which of the following bosses is located in Shellwood?",
     "imageURL": "/images/shellwood.webp",
     "answers":[
@@ -169,15 +169,197 @@
     "answerId":1
     },{
         
-    "quesionId": 15,
+    "questionId": 15,
     "question": "Which of the following merchants does NOT sell/give a Crafting kit?",
     "imageURL": "/images/craftingKit.webp",
     "answers":[
         {"id": 1, "answerText": "Creige"},
         {"id": 2, "answerText": "Mottled Skarr"},
         {"id": 3, "answerText": "Forge Daughter"},
-        {"id": 4, "answerText": "Grindle "}
+        {"id": 4, "answerText": "Grindle"}
     ],
     "answerId":2
+    },
+    
+    {
+        
+    "questionId": 16,
+    "question": "Which of the following items is used to upgrade your weapon?",
+    "imageURL": "/images/needle.webp",
+    "answers":[
+        {"id": 1, "answerText": "Silkeater"},
+        {"id": 2, "answerText": "Craftmetal"},
+        {"id": 3, "answerText": "Pale Oil"},
+        {"id": 4, "answerText": "Spine Core"}
+    ],
+    "answerId":3
+    },{
+        
+    "questionId": 17,
+    "question": "How many fleas do you need to totally complete the FleaMaster quest?",
+    "imageURL": "/images/fleas.webp",
+    "answers":[
+        {"id": 1, "answerText": "20"},
+        {"id": 2, "answerText": "25"},
+        {"id": 3, "answerText": "30"},
+        {"id": 4, "answerText": "35"}
+    ],
+    "answerId":3
+    },{
+        
+    "questionId": 18,
+    "question": "Which of the following bosses DOESN'T give you an Old Heart after being defeated?",
+    "imageURL": "/images/oldHearts.webp",
+    "answers":[
+        {"id": 1, "answerText": "Crawfather"},
+        {"id": 2, "answerText": "Nyleth"},
+        {"id": 3, "answerText": "Skarrsinger Karmelita"},
+        {"id": 4, "answerText": "Crust King Khann"}
+    ],
+    "answerId":1
+    },{
+        
+    "questionId": 19,
+    "question": "In which area do you find Trobbio?",
+    "imageURL": "/images/Trobbio.webp",
+    "answers":[
+        {"id": 1, "answerText": "Citadel Spa"},
+        {"id": 2, "answerText": "The Stage"},
+        {"id": 3, "answerText": "Memorium"},
+        {"id": 4, "answerText": "The Slab"}
+    ],
+    "answerId":2
+    },{
+        
+    "questionId": 20,
+    "question": "How many variants does 'The Ruined Tool' have?",
+    "imageURL": "/images/The_Ruined_Tool.webp",
+    "answers":[
+        {"id": 1, "answerText": "2"},
+        {"id": 2, "answerText": "3"},
+        {"id": 3, "answerText": "4"},
+        {"id": 4, "answerText": "5"}
+    ],
+    "answerId":2
+    },{
+        
+    "questionId": 21,
+    "question": "How do you get Hunter's Memento?",
+    "imageURL": "/images/Hunters_Memento.webp",
+    "answers":[
+        {"id": 1, "answerText": "Kill all enemies at least once"},
+        {"id": 2, "answerText": "Defeat all bosses"},
+        {"id": 3, "answerText": "Complete all the entries in the Hunter's Journal"},
+        {"id": 4, "answerText": "Get all collectibles"}
+    ],
+    "answerId":3
+    },{
+        
+    "questionId": 22,
+    "question": "Which boss are the Cogwork Dancers based on?",
+    "imageURL": "/images/cogwork_dancers.webp",
+    "answers":[
+        {"id": 1, "answerText": "Clover Dancers"},
+        {"id": 2, "answerText": "Second Sentinel"},
+        {"id": 3, "answerText": "Garmond and Zaza"},
+        {"id": 4, "answerText": "Forebrothers Signis & Gron"}
+    ],
+    "answerId":1
+    },{
+        
+    "questionId": 23,
+    "question": "What happens to Trobbio when you encounter him for the second time?",
+    "imageURL": "/images/tormented_Trobbio.webp",
+    "answers":[
+        {"id": 1, "answerText": "He has wings"},
+        {"id": 2, "answerText": "He fights you with his brother"},
+        {"id": 3, "answerText": "He gets corrupted"},
+        {"id": 4, "answerText": "He becomes depressed"}
+    ],
+    "answerId":4
+    },{
+        
+    "questionId": 24,
+    "question": "What is the name of Garmond's companion?",
+    "imageURL": "/images/Garmond_and_zaza.webp",
+    "answers":[
+        {"id": 1, "answerText": "Groal"},
+        {"id": 2, "answerText": "Zaza"},
+        {"id": 3, "answerText": "Gurr"},
+        {"id": 4, "answerText": "Nyleth"}
+    ],
+    "answerId":2
+    },{
+        
+    "questionId": 25,
+    "question": "How many relics are there in the game?",
+    "imageURL": "/images/relics.webp",
+    "answers":[
+        {"id": 1, "answerText": "12"},
+        {"id": 2, "answerText": "13"},
+        {"id": 3, "answerText": "14"},
+        {"id": 4, "answerText": "15"}
+    ],
+    "answerId":3
+    },{
+        
+    "questionId": 26,
+    "question": "What do you get after winning against Pinstress?",
+    "imageURL": "/images/Pinstress.webp",
+    "answers":[
+        {"id": 1, "answerText": "Injector Band"},
+        {"id": 2, "answerText": "Snitch Pick"},
+        {"id": 3, "answerText": "Wreath of Purity"},
+        {"id": 4, "answerText": "Pin Badge"}
+    ],
+    "answerId":4
+    },{
+        
+    "questionId": 27,
+    "question": "How many Mossberries do you need to upgrade Druid's eye?",
+    "imageURL": "/images/Druids_eye.webp",
+    "answers":[
+        {"id": 1, "answerText": "2"},
+        {"id": 2, "answerText": "3"},
+        {"id": 3, "answerText": "4"},
+        {"id": 4, "answerText": "5"}
+    ],
+    "answerId":3
+    },{
+    
+    "questionId": 28,
+    "question": "Which character wasn't in the Red Memory?",
+    "imageURL": "/images/red_memory.webp",
+    "answers":[
+        {"id": 1, "answerText": "Herrah"},
+        {"id": 2, "answerText": "Huntress"},
+        {"id": 3, "answerText": "White Lady"},
+        {"id": 4, "answerText": "Vespa  "}
+    ],
+    "answerId":2
+    },{
+        
+    "questionId": 29,
+    "question": "How many shells do you get from breaking 'Hornet Statuette'?",
+    "imageURL": "/images/Hornet_Statuette.webp",
+    "answers":[
+        {"id": 1, "answerText": "60"},
+        {"id": 2, "answerText": "120"},
+        {"id": 3, "answerText": "150"},
+        {"id": 4, "answerText": "200"}
+    ],
+    "answerId":1
+    },{
+        
+    "questionId": 30,
+    "question": "Which of the following is not a merchant?",
+    "imageURL": "/images/merchants.webp",
+    "answers":[
+        {"id": 1, "answerText": "Kratt"},
+        {"id": 2, "answerText": "Mort"},
+        {"id": 3, "answerText": "Pinmaster Plinney"},
+        {"id": 4, "answerText": "Gilly"}
+    ],
+    "answerId":4
     }
 ]

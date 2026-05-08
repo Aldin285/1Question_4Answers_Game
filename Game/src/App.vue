@@ -26,7 +26,7 @@ import Button from './Components/Button/Button.vue';
   }
   // Liste des questions et la limite de questions à afficher
   let selectedQuestions = reactive([]);
-  const questionLimits = 1;
+  const questionLimits = 10;
 
   // Sélection des questions
   function selectQuestions() {
@@ -73,12 +73,20 @@ import Button from './Components/Button/Button.vue';
     currentQuestionPosition.value = questionLimits - 1;
     answerId.value = data[selectedQuestions[currentQuestionPosition.value]].answerId;
 
+    // Update highest score if necessary
+    const highestScore = ref(JSON.parse(localStorage.getItem("totalScore") ?? false));
+
+    if (totalScore.value > highestScore.value) {
+        localStorage.setItem("totalScore", JSON.stringify(totalScore.value));
+    }
+
     totalScore.value = 0;
   }
 
   function handleNextQuestion() {
     NextQuestion();
   }
+
 
  
  

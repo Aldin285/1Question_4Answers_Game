@@ -2,14 +2,17 @@
 import { onMounted,watchEffect, computed, ref } from 'vue';
 
 const props = defineProps({
+    // The time left for the current question, in milliseconds
     dashLeft:{
         type: Number,
         required: true
     },
+    // The total time for the question, in milliseconds
     totalDash:{
         type: Number,
         required: true
     },
+    // Changes based on the answer
     check:{
         type: Boolean,
         default: false
@@ -21,6 +24,8 @@ const props = defineProps({
 
 const currentScore = ref(0);
 const totalScore = ref(0);
+
+const highestScore = ref(JSON.parse(localStorage.getItem("totalScore") ?? false));
 
 function calculateScore(){
     // Simple calculation based on time left
@@ -47,7 +52,9 @@ onMounted(() => {
 <template>
 <div class="score-root">
     <div class="container">
+        
         <p>Total score : {{ totalScore }}</p>
+        <p v-if="highestScore">Highest score : {{ highestScore }}</p>
      </div>
 </div>
 </template>
