@@ -19,8 +19,8 @@
         background: rgba(51, 43, 43, 0.35);
         border-radius: 5px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
     }
 
     h2 {
@@ -29,23 +29,28 @@
     }
 
     img {
-        max-width: 35em;
+        width: auto;
+        max-width: min(100%, 35em);
+        height: auto;
         max-height: 17.5em;
-
-        min-width: 20em;
-        min-height: 15em;
-        
+        object-fit: contain;
         border-radius: 3%;
     }
 
     /* Mobile responsive */
     @media (max-width: 768px) {
         img {
-            max-width: 90vw;
+            max-width: 80vw;
             max-height: 45vw;
-            min-width: 250px;
-            min-height: 200px;
             width: auto;
             height: auto;
         }
+
+        .question {
+            max-width: 80vw;
+        }
+        
+        h2 {
+        font-size: 1em;
+         }
     }

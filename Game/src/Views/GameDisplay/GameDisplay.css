@@ -23,9 +23,10 @@
 
 
   /* Mobile responsive */
-  @media (max-width: 768px) {
+  @media (max-width: 800px) {
     .answerSelect {
-      gap: 1.5em;
+      max-width: 95vw;
+      gap: 0.5em;
       padding-right: 0.75em;
       padding-left: 0.75em;
     }

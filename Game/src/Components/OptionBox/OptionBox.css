@@ -15,8 +15,12 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    overflow-wrap: break-word;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 1.2;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 @media (max-width: 1115px) {
@@ -29,9 +33,9 @@ button {
 @media (max-width: 520px) {
     button {
         width: 10em;
-        height: 3.5em;
+        height: auto;
         font-size: 80%;
-        padding: 0.5rem 2rem;
+        padding: 0.5rem 0.8rem;
         min-height: 48px;
     }
 }
