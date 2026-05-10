@@ -249,7 +249,7 @@
     "answers":[
         {"id": 1, "answerText": "Kill all enemies at least once"},
         {"id": 2, "answerText": "Defeat all bosses"},
-        {"id": 3, "answerText": "Complete all the entries in the Hunter's Journal"},
+        {"id": 3, "answerText": "Complete The the Hunter's Journal"},
         {"id": 4, "answerText": "Get all collectibles"}
     ],
     "answerId":3

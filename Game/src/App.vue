@@ -1,10 +1,12 @@
 <script setup>
-  import Footer from './Views/Footer/Footer.vue';
-import GameDisplay from './Views/GameDisplay/GameDisplay.vue';
-import Button from './Components/Button/Button.vue';
+  import Footer from '@/Views/Footer/Footer.vue';
+  import GameDisplay from '@/Views/GameDisplay/GameDisplay.vue';
+  import Button from '@/Components/Button/Button.vue';
   import data from "./data/quiz.json"
 
   import { ref, computed, reactive } from 'vue';
+  import Restart from '@/Views/Restart/Restart.vue';
+import PieComponent from './Components/PieComponent/PieComponent.vue';
 
   // Affichage
   const getStarted = ref(true);
@@ -39,6 +41,7 @@ import Button from './Components/Button/Button.vue';
     }
     //  console.log("Selected Questions : ", selectedQuestions);
   }
+  // Initialiser les questions sélectionnées
   selectQuestions();
  
   // La position de la question actuelle dans la liste des questions sélectionnées
@@ -50,6 +53,11 @@ import Button from './Components/Button/Button.vue';
 
   // Score
   const totalScore = ref(0);
+  const pieScores = reactive({
+    correct: 0,
+    incorrect: 0,
+    unanswered: 0
+  });
 
   // Fonction pour passer à la question suivante et afficher le score 
   function NextQuestion() {
@@ -89,27 +97,12 @@ import Button from './Components/Button/Button.vue';
 
 
  
- 
 </script>
 
 <template>
   <div class="screen-root">
 
-    <!-- Ecran de jeu -->
-    <transition name="fade" mode="out-in">
-      <div v-if="displayElements" key="display">
-        <GameDisplay 
-          :currentQuestion="data[currentQuestionIndex]"
-          :answerId="answerId"
-          :imagePath="resolveImagePath"
-          @nextQuestion="handleNextQuestion"
-          @scoreUpdate="(score)=>totalScore = score"
-        />
-         
-      </div>
-    </transition>
-
-    <!-- Ecran démarrage -->
+     <!-- Ecran démarrage -->
     <transition name="fade" mode="out-in">
       <div v-if="getStarted" class="getStarted" key="start">
         <h1>Welcome to the Quiz Game!</h1>
@@ -120,24 +113,39 @@ import Button from './Components/Button/Button.vue';
       </div>
     </transition>
 
-    <!-- Ecran fin de la partie -->
+    <!-- Ecran de jeu -->
     <transition name="fade" mode="out-in">
-      <div v-if="displayEndScreen" class="getStarted" key="end">
-        <h1>Your final score is :</h1>
-        <h1> {{ totalScore }}</h1>
-        <!-- <button @click="ResetGame"  class="button-82-pushable">
-        <span class="button-82-shadow"></span>
-        <span class="button-82-edge"></span>
-        <span class="button-82-front text">
-          Play again
-        </span>
-        </button> -->
-        <Button
-          text="Play again"
-          @click="ResetGame"
-        />
+      <div v-if="displayElements" key="display">
+        <GameDisplay 
+          :currentQuestion="data[currentQuestionIndex]"
+          :answerId="answerId"
+          :imagePath="resolveImagePath"
+          @nextQuestion="handleNextQuestion"
+          @scoreUpdate="(score)=>totalScore = score"
+          @correctAnswer="()=>pieScores.correct++"
+          @badAnswer="()=>pieScores.incorrect++"
+          @timeOut="()=>pieScores.unanswered++"
+        />         
       </div>
-    </transition>
+    </transition>   
+
+    <!-- Ecran fin de la partie -->
+    
+      <div v-if="displayEndScreen" class="getStarted" key="end">
+        <transition name="fade" mode="out-in">
+              <Restart :totalScore="totalScore" @click="ResetGame"/>
+        </transition>
+
+        <transition name="fade" mode="out-in">
+              <PieComponent 
+                :correct="pieScores.correct" 
+                :incorrect="pieScores.incorrect" 
+                :unanswered="pieScores.unanswered"
+              />
+        </transition>
+
+      
+      </div>
 
      <!-- Footer -->
     <Footer />

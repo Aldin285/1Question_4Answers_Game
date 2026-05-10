@@ -4,7 +4,7 @@
   import timer from '../../Components/Timer/Timer.vue';
   import score from '../../Components/Score/Score.vue';
 
-  import { ref, onMounted, watch } from 'vue';
+  import { ref, onMounted, watch, reactive } from 'vue';
 
   // Props from parent (App.vue)
   const props = defineProps({
@@ -23,7 +23,7 @@
   });
 
   // Emit events to parent
-  const emit = defineEmits(['checkAnswer', 'nextQuestion', 'timeOut', 'scoreUpdate']);
+  const emit = defineEmits([ 'nextQuestion', 'scoreUpdate', 'correctAnswer', 'badAnswer', 'timeOut' ]);
 
   // Pour la réponse sélectionnée
   const selectedAnswer = ref(null);
@@ -42,9 +42,8 @@
 
   // Score
   const checkAnswer = ref(false);
-  const totalScore = ref(0);
 
-  // Fonction pour passer à la question suivante
+  // Fonction pour passer à la question suivante après un délais de 3 secondes
   function NextQuestion() {
     setTimeout(() => {
       emit('nextQuestion');
@@ -81,6 +80,10 @@
       };
 
       checkAnswer.value = true;
+
+      //Updating scores for pie chart 
+      emit('correctAnswer');
+
     }else{
       // Mauvaise réponse
       rightAnswerStyle.value = {
@@ -94,6 +97,9 @@
         backgroundColor: '#ff7f7f',
         cursor: 'not-allowed',
       };
+
+      //Updating scores for pie chart 
+      emit('badAnswer');
     }
 
     // Désactive les boutons après une sélection
@@ -126,10 +132,11 @@
         cursor: 'not-allowed',
       };
 
-      // Désactive les boutons 
-      disableButtons.value = true;
-
+      // Updating scores for pie chart
       emit('timeOut');
+
+      // Désactive les boutons
+      disableButtons.value = true;
       
       // Changer la question
       NextQuestion();
